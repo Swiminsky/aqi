@@ -1,0 +1,118 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+}
+
+.aqi-header {
+  font-size: 36px;
+  font-size: 3rem;
+  display: inline-block;
+  margin-bottom: 10px;
+}
+
+.aqi-row {
+  font-size: 18px;
+  font-size: 1.5rem;
+  display: inline-block;
+  margin-bottom: 10px;
+}
+
+td {
+  font-size: 18px;
+}
+
+.top {
+  height: 280px;
+  position: relative;
+  text-align: center;
+  background-color: #16A085;
+}
+
+.top-logo {
+  top: 20px;
+  position: relative;
+  font-size: 60px;
+  color: white;
+}
+
+.glyphicon-leaf {
+  border: 2px solid white;
+  padding: 30px;
+  border-radius: 50%;
+}
+
+.top-title {
+  top: 30px;
+  position: relative;
+  font-size: 48px;
+  color: white;
+}
+
+.top-content {
+  top: 25px;
+  position: relative;
+  font-size: 28px;
+  color: white;
+}
+
+.input-search {
+  margin-top: 30px;
+}
+
+.changeCity {
+  cursor: pointer;
+  margin-right: 5px;
+}
+
+.changeCity:hover {
+  text-decoration: none;
+}
+
+.aqiLevel {
+  float: right;
+}
+
+.aqiTime {
+  float: right;
+}
+
+.aqiNum {
+  margin-left: 30px;
+  margin-left: 2rem;
+}
+
+.table-bordered {
+  border: 1px solid #888888;
+}
+
+.table-bordered > thead > tr > th, .table-bordered > tbody > tr > th, .table-bordered > tfoot > tr > th, .table-bordered > thead > tr > td, .table-bordered > tbody > tr > td, .table-bordered > tfoot > tr > td {
+  border: 1px solid #888888;
+}
+
+@media screen and (max-width: 800px) {
+  td {
+    font-size: 18px;
+  }
+
+  .aqiNum {
+    margin-left: 0rem;
+  }
+
+  .aqi-header {
+    font-size: 22px;
+  }
+
+  .aqi-row {
+    font-size: 13px;
+    display: block;
+    margin-bottom: 10px;
+  }
+
+  .aqiTime {
+    float: none;
+  }
+}
+

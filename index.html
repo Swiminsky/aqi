@@ -1,0 +1,103 @@
+<!Doctype html>
+<html lang="zh-CN" ng-app="aqi">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no"/>
+	<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+	<meta name="apple-mobile-web-app-capable" content="yes" />
+	<meta name="format-detection" content="telephone=no" />
+	<link rel="apple-touch-icon" href="/aqi/icon.png" />
+	<title>AQI - SwimInSky</title>
+	<link rel="stylesheet" type="text/css" href="http://cdn.bootcss.com/bootstrap/3.1.1/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="css/aqi.css">
+	<script src="http://cdn.bootcss.com/angular.js/1.3.15/angular.js"></script>
+	<script src="http://cdn.bootcss.com/angular-ui-bootstrap/0.13.0/ui-bootstrap-tpls.min.js"></script>
+	<script src="js/controller.js"></script>
+</head>
+<body ng-controller="aqiCtrl">
+	<header class="top">
+		<div class="top-logo">
+			<span class="glyphicon glyphicon-leaf"></span>
+		</div>
+		<div class="top-title">绿叶</div>
+		<div class="top-content">同呼吸，共命运</div>
+	</header>
+	<div class="content">
+		<div class="col-sm-offset-3 col-sm-6 input-search">
+			<div class="input-group input-group-lg">
+				<span class="input-group-addon">
+					<span class="glyphicon glyphicon-search"></span>
+				</span>
+				<input type="text" class="form-control" placeholder="Where Are You Baby ?" ng-model="search"></div>
+			<br>
+			<label>猜你想找&nbsp;:&nbsp;</label>
+			<a class="changeCity" ng-repeat="city in cities" ng-click="changeCity(city)">{{city}}&nbsp;</a>
+			<br>
+			<br>
+			<alert ng-repeat='aqi in aqis | filter:search' type='{{aqiType(aqi.aqi)}}' close='aqiClose($index)'>
+				<div class="aqi-header">{{aqi.position_name}}</div>
+				<div class="aqi-header aqiNum">AQI:{{aqi.aqi}}</div>
+				<div class="aqi-header aqiLevel">{{aqi.quality}}</div>
+				<br>
+				<p class="aqi-row">主要污染物 : {{primaryPollutant(aqi.primary_pollutant)}}</p>
+				<p class="aqi-row aqiTime">数据来源时间 : {{timeFormat(aqi.time_point)}}</p>
+				<div class="table-response">
+					<table class="table table-bordered">
+						<thead>
+							<tr>
+								<td>Pollutants (μg/m3)</td>
+								<td>Average (1 hour )</td>
+								<td>Average (1 day )</td>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>O3</td>
+								<td>{{aqi.o3}}</td>
+								<td>{{aqi.o3_8h}}</td>
+							</tr>
+							<tr>
+								<td>SO2</td>
+								<td>{{aqi.so2}}</td>
+								<td>{{aqi.so2_24h}}</td>
+							</tr>
+							<tr>
+								<td>NO2</td>
+								<td>{{aqi.no2}}</td>
+								<td>{{aqi.no2_24h}}</td>
+							</tr>
+							<tr>
+								<td>PM2.5</td>
+								<td>{{aqi.pm2_5}}</td>
+								<td>{{aqi.pm2_5_24h}}</td>
+							</tr>
+							<tr>
+								<td>PM10</td>
+								<td>{{aqi.pm10}}</td>
+								<td>{{aqi.pm10_24h}}</td>
+							</tr>
+							<tr>
+								<td>CO (mg/m3)</td>
+								<td>{{aqi.co}}</td>
+								<td>{{aqi.co_24h}}</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</alert>
+		</div>
+	</div>
+	<footer class="col-sm-12 text-center">
+		<hr>
+		<br>
+		<p>
+			感谢
+			<a href="http://www.pm25.in/" target="_blank">PM25.in</a>
+			为本站提供数据支持
+			<br>
+			<a href="http://iwxy.me" target="_blank">SwimInSky</a>
+			@2015
+		</p>
+		<br></footer>
+</body>
+</html>
